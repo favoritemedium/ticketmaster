@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     coderay (1.0.8)
-    erubis (2.7.0)
     ffi (1.2.0)
     guard (1.5.4)
       listen (>= 0.4.2)
@@ -38,7 +37,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  erubis
   guard-shotgun
   httpclient
   rb-fsevent
