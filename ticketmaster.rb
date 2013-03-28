@@ -40,7 +40,7 @@ class Ticketmaster < Sinatra::Base
 
   post "/upyougo" do
     session[:tickets] = UtestAids::ParseCsv.fromfile params[:tickets][:tempfile]
-    session[:notice] = "#{session[:tickets].count} tickets uploaded."
+    session[:notice] = "#{session[:tickets].count} ticket(s) uploaded."
     redirect "/verify"
   end
 
