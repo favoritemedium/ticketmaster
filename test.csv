@@ -1,32 +1,0 @@
-"ID","Test Cycle","Build #","Title","Status","Verification","Severity","Valuable","Bug Type","Submitted","Last Modified","Tester","Export","Action Performed","Expected Result","Actual Result","Error Message","Error Code","Messages","Customer Notes","Environment","Additional Environment Info","Attachment","Additional Context Info","Frequency","Resolved"
-"524310","Nexant Web - 11/13","w1","Grammatical Error in the message displayed on completion of Home section of the Home Survey. ","Rejected","Not Requested","Low","No Selection","GUI","11/14/2012","12/03/2012","Shilpi Gupta","","1. Go to http://ienergy.hotstudiodev.com:8080/energy_profile2. In the ‘Your Home 16 Questions’ tab, answer the questions and click on “Submit” button3. Completion message for the survey is displayed","Should display the following message “You have completed Your Home section of the home survey”","Message displayed is “You have completed the Your Home section of the home survey”","",,"No Bug Messages Specified.","2012-11-15 23:10:29.0, by Andy Merrill:
-Reproducible: Yes
-In Scope: Yes
-Duplicate: No
-Validity: Invalid
-Recommendation: Pending Rejection
-Comment: The actual results looks to be proper grammar. ","English , Windows, Vista, Chrome, Webcam, Microphone, Speakers, Headset, 
-","Occurred with Win XP and Firefox 10.0.6","Home Survey message.jpg: https://utest-dl.s3.amazonaws.com/4565/3011/21032/524310/bugAttachment/Home%20Survey%20message.jpg?AWSAccessKeyId=AKIAI22MP2ZGCUFSB7YA&Expires=1678066916&Signature=5FDGQzajV1Oan96T2LcjqNNRrf8%3D
-","","Every Time","true"
-"524284","Nexant Web - 11/13","w1","Go to Dashboard button appears to be disabled, but has functionality","Rejected","Not Requested","Low","No Selection","GUI","11/14/2012","12/03/2012","Keerthi Gali","","1. Enter the following address in the address bar: http://ienergy.hotstudiodev.com:80802. Enter the login credentials.3. Sign in using facebook account.4. Select Dashboard.5. Select Complete the Survey.6. Answer the questions under any category and select Submit option.7. View that Nice work! message box appears and 'Go to Dashboard' option is grayed out."," 'Go to Dashboad' option should not be grayed out.","Notice that  'Go to Dashboad'  can be selected and the screen is transited to Dashboard section","",,"No Bug Messages Specified.","2012-11-15 22:48:27.0, by Andy Merrill:
-Reproducible: Yes
-In Scope: Yes
-Duplicate: No
-Validity: Invalid
-Recommendation: Pending Rejection
-Comment: Looks to be working as designed","AVG, English , Windows, 7 64-bit, Chrome, Webcam, Headset, 1 - 15 Mbps, 
-AVG, English , Windows, 7 64-bit, Firefox, Webcam, Headset, 1 - 15 Mbps, 
-AVG, English , Windows, 7 64-bit, Internet Explorer 9, Webcam, Headset, 1 - 15 Mbps, 
-","","Go_To_Dashboard.png: https://utest-dl.s3.amazonaws.com/4565/3011/21032/524284/bugAttachment/Go_To_Dashboard.png?AWSAccessKeyId=AKIAI22MP2ZGCUFSB7YA&Expires=1678066916&Signature=tWAW4CFsCd82O7%2F2JoGFOhsaO0A%3D
-","","Every Time","true"
-"524329","Nexant Web - 11/13","w1","GUI- drop down menu for refrigerator manufacture ","Rejected","Not Requested","High","No Selection","GUI","11/14/2012","12/03/2012","andrey tarasenko","","1. open http://ienergy.hotstudiodev.com:80802. login to the page3. your zip code input '78660'4.Building type: 'Single-Family Detached House'5. Occupants: '7 persons'6. click on 'find out button'7. click on 'home energy survey'8.  click on appliances button in top bar choice # 4 from the left9. start survey this 'What best describes your main refrigerator?' by pressing on side by side refrigerator choice10. type the  Manufacturer's name? (primary) in  the windowhttp://ienergy.hotstudiodev.com:8080/survey/6?","Drop down menu this models and serial numbers","you have to remember your model and serial number 'What make me personaly quit survey on this step'","none",,"No Bug Messages Specified.","2012-11-15 23:20:37.0, by Andy Merrill:
-Reproducible: Yes
-In Scope: No
-Duplicate: No
-Validity: Invalid
-Recommendation: Pending Rejection
-Comment: Not a functional issue.  Working as designed. ","AVG, English , Windows, 7 64-bit, Chrome, Webcam, Microphone, Speakers, Headset, 15 - 100 Mbps, 
-AVG, English , Windows, 7 64-bit, Firefox, Webcam, Microphone, Speakers, Headset, 15 - 100 Mbps, 
-AVG, English , Windows, 7 64-bit, Safari, Webcam, Microphone, Speakers, Headset, 15 - 100 Mbps, 
-","","drop down menu.PNG: https://utest-dl.s3.amazonaws.com/4565/3011/21032/524329/bugAttachment/drop%20down%20menu.PNG?AWSAccessKeyId=AKIAI22MP2ZGCUFSB7YA&Expires=1678066916&Signature=uLW%2B03d%2BZ96FA%2BOYLNwazLMwJB0%3D
-","","Every Time","true"
