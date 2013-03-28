@@ -24,7 +24,7 @@ class Ticketmaster < Sinatra::Base
 
   use Rack::Session::Pool
 
-  self.config = YAML::load(File.open("./config/credentials.yaml"))
+  self.config = YAML::load(File.open("./config/credentials.yaml")) rescue {}
 
   use Rack::Auth::Basic, "Restricted Area" do |user, pass|
     [user, pass] == [
