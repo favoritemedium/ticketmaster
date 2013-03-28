@@ -3,7 +3,8 @@ require "yaml"
 require "./helpers/unfuddle_api.rb"
 require "./helpers/utest_aids.rb"
 
-# ticketmaster requires the following environment variables to be set:
+# ticketmaster requires the following to be set, either as environment
+# variables or in ./config/credentials.yaml
 # TM_USER
 # TM_PASS - credetionals to access ticketmaster
 # UNFUDDLE_USER
@@ -55,16 +56,14 @@ class Ticketmaster < Sinatra::Base
       session[:notice] = "No tickets."
       redirect "/"
     end
-    user = params[:user]
-    pass = params[:resu]
-    if user.empty? || pass.empty?
-      session[:notice] = "Please enter a username and password for Unfuddle."
-      redirect "/verify"
-    end
     submitted = 0
     failed = []
     errors = []
-    fu = UnfuddleApi::Futicket.new(user, pass, 313388)
+    fu = UnfuddleApi::Futicket.new(
+      Ticketmaster.config["UNFUDDLE_USER"] || ENV["UNFUDDLE_USER"],
+      Ticketmaster.config["UNFUDDLE_PASS"] || ENV["UNFUDDLE_PASS"],
+      Ticketmaster.config["UNFUDDLE_PROJECT_ID"] || ENV["UNFUDDLE_PROJECT_ID"]
+    )
     begin
       tickets.each do |t|
         ok, message = fu.submit(t[:title], t[:description])
