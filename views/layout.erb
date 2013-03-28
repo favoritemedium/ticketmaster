@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>Nexant Bulk Ticket Submission Tool</title>
+  <style type="text/css">
+    body { background-color: #f8f8f8; font-family: Arial }
+    .notice { color: #090 }
+    .errors { color: #900 }
+    input[type=submit] { margin: 8px 0 }
+  </style>
+</head>
+<body>
+  <h1>Nexant Bulk Ticket Submission Tool</h1>
+  <% if session[:notice] %>
+    <div class="notice"><%= session[:notice].safe %></div>
+    <% session[:notice] = nil %>
+  <% end %>
+  <% if session[:errors] %>
+    <div class="errors"><%= session[:errors].safe %></div>
+    <% session[:errors] = nil %>
+  <% end %>
+  <%= yield %>
+</body>
+</html>

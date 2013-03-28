@@ -1,0 +1,11 @@
+<h2>Step 1.&nbsp; Upload a csv file.</h2>
+<div>The data should be in the following format:</div>
+<ul>
+  <li>The first row is the column headings, and subsequent rows are tickets, one per row.</li>
+  <li>Data in the column called <em>Title</em> will be used for the ticket summary.&nbsp; The rest of the data go in to the ticket description.</li>
+  <li>A blank title will cause the ticket to be rejected.</li>
+</ul>
+<form method="post" enctype="multipart/form-data" action="upyougo">
+	<div>File of tickets (csv): <input type="file" name="tickets" accept="text/csv" required="required" autofocus="autofocus"></div>
+  <div><input type="submit" value="Upload Tickets"></div>
+</form>

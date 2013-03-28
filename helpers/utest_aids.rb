@@ -16,7 +16,7 @@ module UtestAids
         if head.nil?
           head = x.map { |z| z.chomp }
         else
-          title = "No title"
+          title = ""
           desc = []
           x.each_index do |i|
             h = head[i]

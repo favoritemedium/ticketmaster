@@ -1,0 +1,12 @@
+<h2>Step 2. Submit the tickets.</h2>
+<form method="post" action="awayyougo">
+	<div>Unfuddle username: <input type="text" name="user"></div>
+	<div>Unfuddle password: <input type="password" name ="resu"></div>
+  <div><input type="submit" value="Submit Tickets"></div>
+</form>
+<div><%= @tickets.count %> ticket(s) to submit.</div>
+<ol>
+  <% @tickets.each do |t| %>
+    <li><%= (t[:title].strip.empty? ? "<no summary>" : t[:title]).safe %></li>
+  <% end %>
+</ol>

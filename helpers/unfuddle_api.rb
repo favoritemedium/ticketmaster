@@ -6,22 +6,26 @@ require 'json'
 # Method Futicket.submit returns:
 #   boolean true (success) or false (failure)
 #   string message
+#
+# Raises UnfuddleApi::Authentication if username/password combination
+# is not valid.
 
 module UnfuddleApi
 
+  class Authentication < StandardError
+  end
+
   class Futicket
 
-    attr_accessor :username, :password, :projectid, :summary, :description
-
-    def initialize(username=nil, password=nil, projectid=0, summary='', description='')
+    def initialize(username=nil, password=nil, projectid=0)
       @username = username
       @password = password
       @projectid = projectid
-      @summary = summary
-      @description = description
     end
 
-    def submit
+    def submit(summary='', description='')
+      @summary = summary
+      @description = description
       magic = HTTPClient.new
       magic.set_auth('https://favmed.unfuddle.com/', @username, @password)
       r = magic.post(
@@ -29,10 +33,13 @@ module UnfuddleApi
         "<ticket><summary>#{@summary}</summary><description>#{@description}</description><priority>3</priority></ticket>",
         { 'Accept' => 'application/json', 'Content-Type' => 'application/xml' }
       )
-      return [true, "Ticket created."] if r.status == 201
-      return [false, "Authentication error."] if r.status == 401
-      return [false, "Error(s): "+JSON::parse(r.content).join('; ')] if r.status == 400
-      return [false, "Error "+r.status]
+      case r.status
+        when 401 then raise Authentication
+        when 201 then [true, "Ticket created."]
+        when 400 then [false, "Error(s): "+JSON::parse(r.content).join('; ')]
+      else
+        [false, "Error "+r.status]
+      end
     end
 
   end

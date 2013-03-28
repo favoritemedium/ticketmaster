@@ -50,7 +50,12 @@ end
 
 #go
 
-fu = UnfuddleApi::Futicket.new(username=opt[:username], password=opt[:password], projectid=opt[:projectid], summary=opt[:summary], description=opt[:description])
-ok, message = fu.submit
+begin
+  fu = UnfuddleApi::Futicket.new(opt[:username], opt[:password], opt[:projectid])
+  ok, message = fu.submit(opt[:summary], opt[:description])
+rescue UnfuddleApi::Authentication
+  ok = false
+  message = "Authentication error."
+end
 puts message if !opt.has_key?(:quiet)
 exit ok

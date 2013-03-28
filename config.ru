@@ -1,0 +1,2 @@
+require './ticketmaster'
+run Ticketmaster
