@@ -33,6 +33,7 @@ module UnfuddleApi
         "<ticket><summary>#{@summary}</summary><description>#{@description}</description><priority>3</priority></ticket>",
         { 'Accept' => 'application/json', 'Content-Type' => 'application/xml' }
       )
+      puts r.inspect
       case r.status
         when 401 then raise Authentication
         when 201 then [true, "Ticket created."]
