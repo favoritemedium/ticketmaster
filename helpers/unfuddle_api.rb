@@ -39,7 +39,7 @@ module UnfuddleApi
         when 201 then [true, "Ticket created."]
         when 400 then [false, "Error(s): "+JSON::parse(r.content).join('; ')]
       else
-        [false, "Error "+r.status]
+        [false, "Error "+r.status.to_s]
       end
     end
 
