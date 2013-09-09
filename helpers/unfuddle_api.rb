@@ -23,6 +23,10 @@ module UnfuddleApi
       @projectid = projectid
     end
 
+    def xmlescape(text)
+      text.gsub('&','&amp;').gsub('<','&lt;').gsub('>','&gt;').gsub('"','&quot;')
+    end
+
     def submit(summary='', description='')
       @summary = summary
       @description = description
@@ -30,7 +34,7 @@ module UnfuddleApi
       magic.set_auth('https://favmed.unfuddle.com/', @username, @password)
       r = magic.post(
         "https://favmed.unfuddle.com/api/v1/projects/#{@projectid}/tickets",
-        "<ticket><summary>#{@summary}</summary><description>#{@description}</description><priority>3</priority></ticket>",
+        "<ticket><summary>#{xmlescape(@summary)}</summary><description>#{xmlescape(@description)}</description><priority>3</priority></ticket>",
         { 'Accept' => 'application/json', 'Content-Type' => 'application/xml' }
       )
       puts r.inspect
