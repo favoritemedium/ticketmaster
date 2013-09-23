@@ -10,6 +10,7 @@ require "./helpers/utest_aids.rb"
 # UNFUDDLE_USER
 # UNFUDDLE_PASS - credentials to access unfuddle.
 # UNFUDDLE_PROJECT_ID - unfuddle project ID, e.g. 313388
+# UNFUDDLE_MILESTONE_ID - ID of milestone to associate with this project, e.g. 307163
 
 class String
   def safe
@@ -62,7 +63,8 @@ class Ticketmaster < Sinatra::Base
     fu = UnfuddleApi::Futicket.new(
       Ticketmaster.config["UNFUDDLE_USER"] || ENV["UNFUDDLE_USER"],
       Ticketmaster.config["UNFUDDLE_PASS"] || ENV["UNFUDDLE_PASS"],
-      Ticketmaster.config["UNFUDDLE_PROJECT_ID"] || ENV["UNFUDDLE_PROJECT_ID"]
+      Ticketmaster.config["UNFUDDLE_PROJECT_ID"] || ENV["UNFUDDLE_PROJECT_ID"],
+      Ticketmaster.config["UNFUDDLE_MILESTONE_ID"] || ENV["UNFUDDLE_MILESTONE_ID"]
     )
     begin
       tickets.each do |t|

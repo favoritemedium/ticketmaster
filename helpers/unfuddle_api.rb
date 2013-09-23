@@ -17,10 +17,11 @@ module UnfuddleApi
 
   class Futicket
 
-    def initialize(username=nil, password=nil, projectid=0)
+    def initialize(username=nil, password=nil, projectid=0, milestoneid=nil)
       @username = username
       @password = password
       @projectid = projectid
+      @milestoneid = milestoneid
     end
 
     def xmlescape(text)
@@ -34,7 +35,7 @@ module UnfuddleApi
       magic.set_auth('https://favmed.unfuddle.com/', @username, @password)
       r = magic.post(
         "https://favmed.unfuddle.com/api/v1/projects/#{@projectid}/tickets",
-        "<ticket><summary>#{xmlescape(@summary)}</summary><description>#{xmlescape(@description)}</description><priority>3</priority></ticket>",
+        "<ticket><summary>#{xmlescape(@summary)}</summary><description>#{xmlescape(@description)}</description><milestone-id type=\"integer\">#{@milestoneid}</milestone-id><priority>3</priority></ticket>",
         { 'Accept' => 'application/json', 'Content-Type' => 'application/xml' }
       )
       puts r.inspect
