@@ -40,9 +40,14 @@ class Ticketmaster < Sinatra::Base
   end
 
   post "/upyougo" do
-    session[:tickets] = UtestAids::ParseCsv.fromfile params[:tickets][:tempfile]
-    session[:notice] = "#{session[:tickets].count} ticket(s) uploaded."
-    redirect "/verify"
+    begin
+      session[:tickets] = UtestAids::ParseCsv.fromfile params[:tickets][:tempfile]
+      session[:notice] = "#{session[:tickets].count} ticket(s) uploaded."
+      redirect "/verify"
+    rescue
+      session[:notice] = "Unrecognized file format."
+      redirect "/"
+    end
   end
 
   get "/verify" do
